@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Time Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Daily Time Tracker</h1>
+      <p>Local, single-user, 4:00 AM day boundary, HH:MM display</p>
+    </header>
+
+    <main>
+      <section class="panel left">
+        <h2>Project / Task</h2>
+        <div class="row">
+          <label for="projectSelect">Project:</label>
+          <select id="projectSelect"></select>
+        </div>
+        <div class="row">
+          <label for="taskSelect">Task:</label>
+          <select id="taskSelect"></select>
+        </div>
+        <div class="row">
+          <button id="startSwitchBtn">Start / Switch Task</button>
+        </div>
+
+        <hr/>
+        <h3>Add / Edit</h3>
+        <div class="row">
+          <input id="projectNameInput" maxlength="50" placeholder="New project name" />
+          <button id="addProjectBtn">Add Project</button>
+        </div>
+        <div class="row">
+          <input id="taskNameInput" maxlength="50" placeholder="New task name" />
+          <button id="addTaskBtn">Add Task</button>
+        </div>
+
+        <h3>Manage</h3>
+        <div class="row small">
+          <button id="editProjectBtn">Rename Project</button>
+          <button id="deleteProjectBtn">Delete Project</button>
+        </div>
+        <div class="row small">
+          <button id="editTaskBtn">Rename Task</button>
+          <button id="deleteTaskBtn">Delete Task</button>
+        </div>
+      </section>
+
+      <section class="panel center">
+        <h2>Timer</h2>
+        <div id="currentTaskName" class="current-task">No active task</div>
+        <div id="elapsedTime" class="elapsed">00:00</div>
+        <div class="row small">
+          <button id="pauseResumeBtn" disabled>Pause</button>
+          <button id="stopBtn" disabled>Stop</button>
+        </div>
+        <div class="status" id="statusMessage"></div>
+      </section>
+
+      <section class="panel right">
+        <h2>Today Totals</h2>
+        <div class="row">
+          <label><input type="radio" name="summaryMode" value="task" checked /> By Task</label>
+          <label><input type="radio" name="summaryMode" value="project" /> By Project</label>
+          <label><input type="radio" name="summaryMode" value="projectTask" /> Project + Task</label>
+        </div>
+        <table id="summaryTable">
+          <thead><tr><th>Label</th><th>Time</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <small>Time boundary: 4 AM local. Small durations (<=1 min) are not saved.</small>
+    </footer>
+  </div>
+
+  <script src="timeUtils.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
